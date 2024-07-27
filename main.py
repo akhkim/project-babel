@@ -6,15 +6,15 @@ import argparse
 from faster_whisper import WhisperModel
 from translatepy.translators.google import GoogleTranslate
 import time
- 
+
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model", default="tiny", help="Model to use",
                     choices=["tiny", "base", "small", "medium", "large"])
-parser.add_argument("--translation_lang", default='English',
+parser.add_argument("--translation_lang", default='english',
                     help="Which language should we translate into?" , type=str)
-parser.add_argument("--energy_threshold", default=0.00005,
+parser.add_argument("--threshold", default=0.0005,
                     help="How loud of a sound should we record?" , type=float)
 args = parser.parse_args()
 if args.model == "large":
@@ -24,7 +24,7 @@ gtranslate = GoogleTranslate()
 
 samplerate = 16000  # Increased for better audio quality
 chunk_duration = 1
-energy_threshold = args.energy_threshold
+threshold = args.threshold
 min_record_duration = 2
 output = "output.wav"
 
@@ -33,10 +33,10 @@ model = WhisperModel(args.model, device="auto", compute_type="auto")
 def is_loud_enough(data):
     loudness = np.sqrt(np.mean(data**2))
     print(f"Current loudness: {loudness:.4f}")  # Debugging output
-    return loudness >= energy_threshold
+    return loudness >= threshold
 
 with sc.get_microphone(id=str(sc.default_speaker().name), include_loopback=True).recorder(samplerate=samplerate) as mic:
-    print(f"Recording... Press Ctrl+C to stop. Energy threshold: {energy_threshold}")
+    print(f"Recording... Press Ctrl+C to stop. Energy threshold: {threshold}")
     try:
         while True:
             buffer = []

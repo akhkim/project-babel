@@ -6,7 +6,7 @@ import argparse
 from faster_whisper import WhisperModel
 from translatepy.translators.google import GoogleTranslate
 import time
-
+ 
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 parser = argparse.ArgumentParser()

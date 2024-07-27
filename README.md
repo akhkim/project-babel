@@ -1,7 +1,6 @@
 # Real-time Internal Audio Translate & Transcriber
 
-**project-babel** is a Real-time internal audio translate & transcriber that uses [SYSTRAN/faster-whisper](https://github.com/SYSTRAN/faster-whisper), 
-a reimplementation of OpenAI's Whisper model.
+**project-babel** is a Real-time internal audio translate & transcriber that uses [SYSTRAN/faster-whisper](https://github.com/SYSTRAN/faster-whisper), a reimplementation of OpenAI's Whisper model.
 
 This script can recognize the volume of the recording, allowing the user to leave out the background noise and focus on louder sound if desired.
 It also can transcribe speech from **57** different languages that Whisper model supports, and translate into **134** different languages that Google Translate supports.

@@ -3,7 +3,7 @@
 **Babel** is a Real-time internal audio translate & transcriber that uses [SYSTRAN/faster-whisper](https://github.com/SYSTRAN/faster-whisper), a reimplementation of OpenAI's Whisper model.
 
 This script can recognize the volume of the recording, allowing the user to leave out the background noise and focus on louder sound if desired.
-It also can transcribe speech from **57** different languages that Whisper model supports, and translate into **134** different languages that Google Translate supports.
+It also can automatically detect **57** different languages that Whisper model supports, and translate them into **134** different languages that Google Translate supports.
 
 ## Requirements
 - Python 3.8 or greater
